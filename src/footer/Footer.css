@@ -1,0 +1,27 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* Put the footer at the bottom of the page */
+    margin-top: auto;
+}
+
+footer input {
+    flex-grow: 1;
+    font-size: 1em;
+    margin: 0.5em;
+    margin-right: 0.25em;
+    padding: 0.75em;
+}
+
+footer button {
+    background-color: grey;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+    fill: white;
+    height: 4em;
+    margin: 0.5em;
+    margin-left: 0.25em;
+    width: 4em;
+}
