@@ -24,6 +24,26 @@ class ListDataAccess {
         throw new Error(
             "DataAccess is an interface and this method must be implemented in subclasses");
     }
+
+    /**
+     * Get the list of TODO tasks from the source.
+     *
+     * @returns {Array} the list of tasks, as an array
+     */
+    getTasksList() {
+        throw new Error(
+            "DataAccess is an interface and this method must be implemented in subclasses");
+    }
+
+    /**
+     * Set the list of TODO tasks to the source.
+     *
+     * @param {Array} taskList the list of tasks, as an array
+     */
+    setTasksList(taskList) {
+        throw new Error(
+            "DataAccess is an interface and this method must be implemented in subclasses");
+    }
 }
 
 export default ListDataAccess;

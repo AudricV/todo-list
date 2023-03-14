@@ -31,6 +31,15 @@ class LocalStorageListDataAccess extends ListDataAccess {
     getTasksCount() {
         return this.tasksList.length;
     }
+
+    getTasksList() {
+        return this.tasksList;
+    }
+
+    setTasksList(newTaskList) {
+        this.tasksList = newTaskList;
+        localStorage.setItem("tasks", JSON.stringify(this.tasksList));
+    }
 }
 
 export default LocalStorageListDataAccess;
