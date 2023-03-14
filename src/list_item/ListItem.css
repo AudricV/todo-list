@@ -1,0 +1,25 @@
+.list_item {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+    margin: 1em;
+}
+
+.list_item_is_checked {
+    height: 2em;
+    margin-right: 0.5em;
+    width: 2em;
+}
+
+.list_item_is_checked:checked {
+    accent-color: grey;
+}
+
+.list_item_title {
+    flex-grow: 1;
+    font-size: 1em;
+    margin-left: 0.5em;
+    padding: 0.5em;
+}
