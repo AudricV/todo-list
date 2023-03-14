@@ -1,0 +1,6 @@
+.list_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+}
