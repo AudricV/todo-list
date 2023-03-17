@@ -6,7 +6,7 @@
  */
 class ListDataAccess {
     /**
-     * Get the completed task count, i.e. the numbers of tasks marked as done.
+     * Get the remaining tasks count, i.e. the numbers of tasks not marked as done.
      *
      * @returns {Number} the number of completed tasks, which should be always positive
      */

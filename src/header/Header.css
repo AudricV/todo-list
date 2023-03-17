@@ -11,6 +11,6 @@ header {
     text-align: center;
 }
 
-.tasks_completed_count {
+.remaining_tasks_count {
     font-weight: bold;
 }
