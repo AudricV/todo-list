@@ -4,12 +4,12 @@
     flex-direction: row;
     justify-content: center;
     list-style-type: none;
-    margin: 1em;
 }
 
 .list_item_is_checked {
     height: 2em;
-    margin-right: 0.5em;
+    margin: 0.25em;
+    margin-left: 0.5em;
     width: 2em;
 }
 
@@ -20,6 +20,28 @@
 .list_item_title {
     flex-grow: 1;
     font-size: 1em;
-    margin-left: 0.5em;
+    margin: 0.25em;
     padding: 0.5em;
+}
+
+.move_down_button, .move_task_button, .move_up_button {
+    height: 4em;
+    padding: 0;
+    width: 4em;
+}
+
+.move_down_button, .move_up_button {
+    background-color: grey;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+    margin: 0.25em;
+}
+
+.move_down_button {
+    margin-right: 0.5em;
+}
+
+.move_task_button {
+    fill: white;
 }
