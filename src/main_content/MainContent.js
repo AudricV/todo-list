@@ -26,6 +26,9 @@ class MainContent extends React.Component {
                                         this.state.tasksList.splice(index, 1);
                                         this.state.tasksList.splice(index, 0, newListItemData);
                                         this.props.dataAccess.setTasksList(this.state.tasksList);
+                                        this.setState({
+                                            tasksList: this.state.tasksList
+                                        });
                                     }
                                 }
                                 onTitleChangedEvent={
@@ -33,6 +36,9 @@ class MainContent extends React.Component {
                                         this.state.tasksList.splice(index, 1);
                                         this.state.tasksList.splice(index, 0, newListItemData);
                                         this.props.dataAccess.setTasksList(this.state.tasksList);
+                                        this.setState({
+                                            tasksList: this.state.tasksList
+                                        });
                                     }
                                 }
                                 onMoveUpButtonClicked={
