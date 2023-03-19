@@ -1,3 +1,18 @@
+.delete_button, .move_down_button, .task_button, .move_up_button {
+    fill: white;
+    height: 4em;
+    padding: 0;
+    width: 4em;
+}
+
+.delete_button, .move_down_button, .move_up_button {
+    background-color: grey;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+    margin: 0.25em;
+}
+
 .list_item {
     align-items: center;
     display: flex;
@@ -24,24 +39,6 @@
     padding: 0.5em;
 }
 
-.move_down_button, .move_task_button, .move_up_button {
-    height: 4em;
-    padding: 0;
-    width: 4em;
-}
-
-.move_down_button, .move_up_button {
-    background-color: grey;
-    border: none;
-    border-radius: 1em;
-    cursor: pointer;
-    margin: 0.25em;
-}
-
 .move_down_button {
     margin-right: 0.5em;
-}
-
-.move_task_button {
-    fill: white;
 }

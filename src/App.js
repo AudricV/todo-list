@@ -34,6 +34,13 @@ class App extends React.Component {
                         quickSearchSearchText: this.state.quickSearchSearchText,
                         remainingTasksCount: this.state.dataAccess.getRemainingTasksCount(),
                         tasksCount: this.state.tasksCount
+                    })}
+                    onTaskDeleted={() => this.setState({
+                        dataAccess: this.state.dataAccess,
+                        showNewTaskDialog: this.state.showNewTaskDialog,
+                        quickSearchSearchText: this.state.quickSearchSearchText,
+                        remainingTasksCount: this.state.dataAccess.getRemainingTasksCount(),
+                        tasksCount: this.state.dataAccess.getTasksCount()
                     })} />
                 <Footer
                     dataAccess={this.state.dataAccess}

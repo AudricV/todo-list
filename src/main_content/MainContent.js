@@ -82,6 +82,23 @@ class MainContent extends React.Component {
                                                 tasksList: this.state.tasksList
                                             });
                                         }
+                                    }
+                                    onDeleteButtonClicked={
+                                        listItemData => {
+                                            const listItemDataIndex = this.state.tasksList.indexOf(listItemData);
+
+                                            if (listItemDataIndex === -1) {
+                                                return;
+                                            }
+
+                                            this.state.tasksList.splice(listItemDataIndex, 1);
+
+                                            this.props.dataAccess.setTasksList(this.state.tasksList);
+                                            this.props.onTaskDeleted();
+                                            this.setState({
+                                                tasksList: this.state.tasksList
+                                            });
+                                        }
                                     } />)
                     }
                 </ul>
@@ -93,7 +110,8 @@ class MainContent extends React.Component {
 MainContent.propTypes = {
     dataAccess: PropTypes.instanceOf(ListDataAccess),
     quickSearchSearchText: PropTypes.string,
-    onTaskCheckedOrUnchecked: PropTypes.func
+    onTaskCheckedOrUnchecked: PropTypes.func,
+    onTaskDeleted: PropTypes.func
 };
 
 export default MainContent;
