@@ -9,29 +9,47 @@ import NewTaskDialog from "./new_task_dialog/NewTaskDialog";
 class App extends React.Component {
     constructor(props) {
         super(props);
+        const dataAccess = new LocalStorageDataAccess();
         this.state = {
-            dataAccess: new LocalStorageDataAccess(),
+            dataAccess: dataAccess,
             showNewTaskDialog: false,
-            quickSearchSearchText: ""
+            quickSearchSearchText: "",
+            remainingTasksCount: dataAccess.getRemainingTasksCount(),
+            tasksCount: dataAccess.getTasksCount()
         };
     }
 
     render() {
         return (
             <div className="App">
-                <Header dataAccess={this.state.dataAccess} />
-                <MainContent dataAccess={this.state.dataAccess} quickSearchSearchText={this.state.quickSearchSearchText} />
+                <Header
+                    remainingTasksCount={this.state.remainingTasksCount}
+                    tasksCount={this.state.tasksCount} />
+                <MainContent
+                    dataAccess={this.state.dataAccess}
+                    quickSearchSearchText={this.state.quickSearchSearchText}
+                    onTaskCheckedOrUnchecked={() => this.setState({
+                        dataAccess: this.state.dataAccess,
+                        showNewTaskDialog: this.state.showNewTaskDialog,
+                        quickSearchSearchText: this.state.quickSearchSearchText,
+                        remainingTasksCount: this.state.dataAccess.getRemainingTasksCount(),
+                        tasksCount: this.state.tasksCount
+                    })} />
                 <Footer
                     dataAccess={this.state.dataAccess}
                     onAddTaskClicked={() => this.setState({
                         dataAccess: this.state.dataAccess,
                         showNewTaskDialog: true,
-                        quickSearchSearchText: this.state.quickSearchSearchText
+                        quickSearchSearchText: this.state.quickSearchSearchText,
+                        remainingTasksCount: this.state.remainingTasksCount,
+                        tasksCount: this.state.tasksCount
                     })}
                     onQuickSearchInputChange={quickSearchSearchTextNewValue => this.setState({
                         dataAccess: this.state.dataAccess,
                         showNewTaskDialog: this.state.showNewTaskDialog,
-                        quickSearchSearchText: quickSearchSearchTextNewValue
+                        quickSearchSearchText: quickSearchSearchTextNewValue,
+                        remainingTasksCount: this.state.remainingTasksCount,
+                        tasksCount: this.state.tasksCount
                     })} />
                 {this.state.showNewTaskDialog ? <div className="app_background"></div> : null}
                 {this.state.showNewTaskDialog ?
@@ -45,13 +63,17 @@ class App extends React.Component {
                             this.setState({
                                 dataAccess: this.state.dataAccess,
                                 showNewTaskDialog: false,
-                                quickSearchSearchText: this.state.quickSearchSearchText
+                                quickSearchSearchText: this.state.quickSearchSearchText,
+                                remainingTasksCount: this.state.dataAccess.getRemainingTasksCount(),
+                                tasksCount: this.state.dataAccess.getTasksCount()
                             });
                         }}
                         onNewTaskCancelled={() => this.setState({
                             dataAccess: this.state.dataAccess,
                             showNewTaskDialog: false,
-                            quickSearchSearchText: this.state.quickSearchSearchText
+                            quickSearchSearchText: this.state.quickSearchSearchText,
+                            remainingTasksCount: this.state.remainingTasksCount,
+                            tasksCount: this.state.tasksCount
                         })} />
                     : null}
             </div>
