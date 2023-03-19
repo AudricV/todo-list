@@ -11,7 +11,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             dataAccess: new LocalStorageDataAccess(),
-            showNewTaskDialog: false
+            showNewTaskDialog: false,
+            quickSearchSearchText: ""
         };
     }
 
@@ -19,12 +20,18 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Header dataAccess={this.state.dataAccess} />
-                <MainContent dataAccess={this.state.dataAccess} />
+                <MainContent dataAccess={this.state.dataAccess} quickSearchSearchText={this.state.quickSearchSearchText} />
                 <Footer
                     dataAccess={this.state.dataAccess}
                     onAddTaskClicked={() => this.setState({
                         dataAccess: this.state.dataAccess,
-                        showNewTaskDialog: true
+                        showNewTaskDialog: true,
+                        quickSearchSearchText: this.state.quickSearchSearchText
+                    })}
+                    onQuickSearchInputChange={quickSearchSearchTextNewValue => this.setState({
+                        dataAccess: this.state.dataAccess,
+                        showNewTaskDialog: this.state.showNewTaskDialog,
+                        quickSearchSearchText: quickSearchSearchTextNewValue
                     })} />
                 {this.state.showNewTaskDialog ? <div className="app_background"></div> : null}
                 {this.state.showNewTaskDialog ?
@@ -37,12 +44,14 @@ class App extends React.Component {
                             this.state.dataAccess.setTasksList(this.state.dataAccess.getTasksList());
                             this.setState({
                                 dataAccess: this.state.dataAccess,
-                                showNewTaskDialog: false
+                                showNewTaskDialog: false,
+                                quickSearchSearchText: this.state.quickSearchSearchText
                             });
                         }}
                         onNewTaskCancelled={() => this.setState({
                             dataAccess: this.state.dataAccess,
-                            showNewTaskDialog: false
+                            showNewTaskDialog: false,
+                            quickSearchSearchText: this.state.quickSearchSearchText
                         })} />
                     : null}
             </div>
