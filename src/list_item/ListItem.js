@@ -3,24 +3,17 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class ListItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            listItemData: this.props.listItemData
-        };
-    }
-
     render() {
         return (
             <li className="list_item">
                 <input
                     className="list_item_is_checked"
                     type="checkbox"
-                    checked={this.state.listItemData.isChecked}
+                    checked={this.props.listItemData.isChecked}
                     onChange={event => {
                         const newCheckedValue = event.target.checked;
                         const newListItemData = {
-                            title: this.state.listItemData.title,
+                            title: this.props.listItemData.title,
                             isChecked: newCheckedValue
                         };
                         this.props.onCheckedChangedEvent(newListItemData);
@@ -28,12 +21,12 @@ class ListItem extends React.Component {
                 <input
                     className="list_item_title"
                     type="text"
-                    defaultValue={this.state.listItemData.title}
+                    defaultValue={this.props.listItemData.title}
                     onChange={event => {
                         const newTitleValue = event.target.value;
                         const newListItemData = {
                             title: newTitleValue,
-                            isChecked: this.state.listItemData.isChecked
+                            isChecked: this.props.listItemData.isChecked
                         };
                         this.props.onTitleChangedEvent(newListItemData);
                     }} />
@@ -54,7 +47,7 @@ class ListItem extends React.Component {
                     </button>
                     <button
                         className="delete_button"
-                        onClick={() => this.props.onDeleteButtonClicked(this.state.listItemData)}>
+                        onClick={() => this.props.onDeleteButtonClicked(this.props.listItemData)}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="task_button" viewBox="0 0 48 48">
                             <path d="M12.65 43.05q-1.8 0-3.2-1.35-1.4-1.35-1.4-3.2V10.9h-2.9V6.35h11.4V4H31.4v2.35h11.4v4.55h-2.9v27.6q0 1.85-1.35 3.2t-3.25 1.35Zm5.2-8.45h3.7V14.7h-3.7Zm8.65 0h3.75V14.7H26.5Z" />
                         </svg>
