@@ -29,34 +29,19 @@ class App extends React.Component {
                     dataAccess={this.state.dataAccess}
                     quickSearchSearchText={this.state.quickSearchSearchText}
                     onTaskCheckedOrUnchecked={() => this.setState({
-                        dataAccess: this.state.dataAccess,
-                        showNewTaskDialog: this.state.showNewTaskDialog,
-                        quickSearchSearchText: this.state.quickSearchSearchText,
-                        remainingTasksCount: this.state.dataAccess.getRemainingTasksCount(),
-                        tasksCount: this.state.tasksCount
+                        remainingTasksCount: this.state.dataAccess.getRemainingTasksCount()
                     })}
                     onTaskDeleted={() => this.setState({
-                        dataAccess: this.state.dataAccess,
-                        showNewTaskDialog: this.state.showNewTaskDialog,
-                        quickSearchSearchText: this.state.quickSearchSearchText,
                         remainingTasksCount: this.state.dataAccess.getRemainingTasksCount(),
                         tasksCount: this.state.dataAccess.getTasksCount()
                     })} />
                 <Footer
                     dataAccess={this.state.dataAccess}
                     onAddTaskClicked={() => this.setState({
-                        dataAccess: this.state.dataAccess,
-                        showNewTaskDialog: true,
-                        quickSearchSearchText: this.state.quickSearchSearchText,
-                        remainingTasksCount: this.state.remainingTasksCount,
-                        tasksCount: this.state.tasksCount
+                        showNewTaskDialog: true
                     })}
                     onQuickSearchInputChange={quickSearchSearchTextNewValue => this.setState({
-                        dataAccess: this.state.dataAccess,
-                        showNewTaskDialog: this.state.showNewTaskDialog,
-                        quickSearchSearchText: quickSearchSearchTextNewValue,
-                        remainingTasksCount: this.state.remainingTasksCount,
-                        tasksCount: this.state.tasksCount
+                        quickSearchSearchText: quickSearchSearchTextNewValue
                     })} />
                 {this.state.showNewTaskDialog ? <div className="app_background"></div> : null}
                 {this.state.showNewTaskDialog ?
@@ -68,19 +53,13 @@ class App extends React.Component {
                             });
                             this.state.dataAccess.setTasksList(this.state.dataAccess.getTasksList());
                             this.setState({
-                                dataAccess: this.state.dataAccess,
                                 showNewTaskDialog: false,
-                                quickSearchSearchText: this.state.quickSearchSearchText,
                                 remainingTasksCount: this.state.dataAccess.getRemainingTasksCount(),
                                 tasksCount: this.state.dataAccess.getTasksCount()
                             });
                         }}
                         onNewTaskCancelled={() => this.setState({
-                            dataAccess: this.state.dataAccess,
-                            showNewTaskDialog: false,
-                            quickSearchSearchText: this.state.quickSearchSearchText,
-                            remainingTasksCount: this.state.remainingTasksCount,
-                            tasksCount: this.state.tasksCount
+                            showNewTaskDialog: false
                         })} />
                     : null}
             </div>
