@@ -3,6 +3,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class ListItem extends React.Component {
+    shouldComponentUpdate(nextProps) {
+        return this.props.listItemData != nextProps.listItemData;
+    }
+
     render() {
         return (
             <li className="list_item">
@@ -23,12 +27,10 @@ class ListItem extends React.Component {
                     type="text"
                     defaultValue={this.props.listItemData.title}
                     onChange={event => {
-                        const newTitleValue = event.target.value;
-                        const newListItemData = {
-                            title: newTitleValue,
+                        this.props.onTitleChangedEvent({
+                            title: event.target.value,
                             isChecked: this.props.listItemData.isChecked
-                        };
-                        this.props.onTitleChangedEvent(newListItemData);
+                        });
                     }} />
                 <section className="reorder_buttons">
                     <button
