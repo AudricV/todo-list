@@ -26,11 +26,19 @@ class ListItem extends React.Component {
                     className="list_item_title"
                     type="text"
                     defaultValue={this.props.listItemData.title}
-                    onChange={event => {
+                    onBlur={event => {
                         this.props.onTitleChangedEvent({
                             title: event.target.value,
                             isChecked: this.props.listItemData.isChecked
                         });
+                    }}
+                    onKeyDown={event => {
+                        if (event.key === "Enter") {
+                            this.props.onTitleChangedEvent({
+                                title: event.target.value,
+                                isChecked: this.props.listItemData.isChecked
+                            });
+                        }
                     }} />
                 <section className="reorder_buttons">
                     <button
